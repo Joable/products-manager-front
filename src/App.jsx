@@ -1,4 +1,5 @@
 import './App.css'
+import Product from './Components/Product/Product'
 
 function App() {
 
@@ -10,6 +11,8 @@ function App() {
       <button>Furniture</button>
       <button>Peripherals</button>
       <button>Lamps</button>
+
+      <Product/>
     </>
   )
 }
