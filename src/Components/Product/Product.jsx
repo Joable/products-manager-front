@@ -2,13 +2,17 @@ import styles from './Product.module.css';
 
 function Product(){
     return(
-        <>
-            <img src="./img/osaka3.PNG" alt="Product" />
+        <div className={styles.product}>
+            <div className={styles.productImage}>
+                <img src="./img/osaka3.PNG" alt="Product" />
+            </div>
 
-            <h3>Product Name</h3>
+            <div className={styles.productText}>
+                <h3>Product Name</h3>
 
-            <h4>Price</h4>
-        </>
+                <h4>Price</h4>
+            </div>
+        </div>
     );
 };
 
