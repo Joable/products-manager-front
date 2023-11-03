@@ -7,7 +7,7 @@ function App() {
     <section className='center'>
       <h2>Product categories</h2>
 
-      <div>
+      <div className='categoriesButtons'>
         <button>All</button>
         <button>Furniture</button>
         <button>Peripherals</button>
