@@ -1,0 +1,37 @@
+export const products = [
+    {
+        img:"img/yotsu2.png",
+        name:"Product1",
+        price:"999$"
+    },
+    {
+        img:"img/osaka3.PNG",
+        name:"Product2",
+        price:"999$"
+    },
+    {
+        img:"img/yotsu1.jpg",
+        name:"Product3",
+        price:"999$"
+    },
+    {
+        img:"img/osaka4.PNG",
+        name:"Product4",
+        price:"999$"
+    },
+    {
+        img:"img/osaka3.PNG",
+        name:"Product5",
+        price:"999$"
+    },
+    {
+        img:"img/yotsu2.png",
+        name:"Product6",
+        price:"999$"
+    },
+    {
+        img:"img/osaka3.PNG",
+        name:"Product7",
+        price:"999$"
+    }
+]

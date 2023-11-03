@@ -1,5 +1,8 @@
 import './App.css'
-import Product from './Components/Product/Product'
+
+import { products } from './assets/Products';
+
+import Product from './Components/Product/Product';
 
 function App() {
 
@@ -14,7 +17,7 @@ function App() {
         <button>Lamps</button>
       </div>
 
-      <Product/>
+      {products.map((product) => <Product data={product}/>)}
     </section>
   )
 }
