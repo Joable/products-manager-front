@@ -17,7 +17,9 @@ function App() {
         <button>Lamps</button>
       </div>
 
-      {products.map((product) => <Product data={product}/>)}
+      <div className='products'>
+        {products.map((product) => <Product data={product}/>)}
+      </div>
     </section>
   )
 }

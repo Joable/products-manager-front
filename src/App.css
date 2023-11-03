@@ -6,6 +6,7 @@
 }
 
 /* categoriesButtons */
+/* categoriesButtons */
 .categoriesButtons{
     display: flex;
     justify-content: space-between;
@@ -24,4 +25,11 @@
 .categoriesButtons button:hover{
     cursor: pointer;
     background-color: rgb(226, 226, 226);
+}
+
+/* products */
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 10px;
 }
