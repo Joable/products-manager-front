@@ -1,28 +1,26 @@
-import { useEffect } from 'react';
 import './App.css'
 
-import { products } from './assets/Products';
+import { useEffect, useState } from 'react';
 
 import Product from './Components/Product/Product';
 
 function App() {
-  
+  const [products, setProducts] = useState([]);  
+
+
   useEffect(() => {
     const getProducts = async () => {
       try{
         const response = await fetch('/products');
         const body = await response.json();
-  
-        console.log(body);
-        console.log(response)
+
+        setProducts(body);
       }catch(e){
         console.log(e);
       }
     };
 
     getProducts();
-
-    //fetch('/products').then((response) => console.log(response.json()))
   }, []);
 
   return (
