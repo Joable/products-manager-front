@@ -3,6 +3,7 @@ import './App.css'
 import { useEffect, useState } from 'react';
 
 import Product from './Components/Product/Product';
+import ProductEdit from './Components/ProductEdit/ProductEdit';
 
 function App() {
   const [products, setProducts] = useState([]);  
@@ -26,6 +27,7 @@ function App() {
   return (
     <section className='center'>
       <h2>Product categories</h2>
+      <ProductEdit/>
 
       <div className='categoriesButtons'>
         <button>All</button>
