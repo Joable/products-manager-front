@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css'
 
 import { products } from './assets/Products';
@@ -5,6 +6,24 @@ import { products } from './assets/Products';
 import Product from './Components/Product/Product';
 
 function App() {
+  
+  useEffect(() => {
+    const getProducts = async () => {
+      try{
+        const response = await fetch('/products');
+        const body = await response.json();
+  
+        console.log(body);
+        console.log(response)
+      }catch(e){
+        console.log(e);
+      }
+    };
+
+    getProducts();
+
+    //fetch('/products').then((response) => console.log(response.json()))
+  }, []);
 
   return (
     <section className='center'>
