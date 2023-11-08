@@ -2,6 +2,8 @@ import './App.css'
 
 import { useEffect, useState } from 'react';
 
+import { getProducts as productsService } from './Services/getProducts';
+
 import Product from './Components/Product/Product';
 import ProductEdit from './Components/ProductEdit/ProductEdit';
 
@@ -14,13 +16,15 @@ function App() {
   useEffect(() => {
     const getProducts = async () => {
       try{
-        const response = await fetch('/products');
-        const body = await response.json();
+        const response = await productsService();
 
-        setProducts(body);
+        setProducts(response);
+
       }catch(e){
+
         console.log(e);
-      }
+
+      };
     };
 
     getProducts();
