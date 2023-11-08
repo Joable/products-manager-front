@@ -41,16 +41,25 @@ function ProductEdit({productData, showModal, handleHide}){
                     <img src={productData.img}/>
                 </div>
 
-                <div className={styles.productText}>
-                    <h2>
-                        {productData.name}
-                    </h2>
+                <div className={styles.textWrapper}>
 
-                    <h3>
-                        {productData.price}
-                    </h3>
+                    <div className={styles.productText}>
+                        <h2>
+                            {productData.name}
+                        </h2>
+
+                        <h3>
+                            {productData.price}
+                        </h3>
+                    </div>
+
+                    <div className={styles.buttons}>
+                        <button>Edit</button>
+
+                        <button>Delete</button>
+                    </div>
+
                 </div>
-
             </div> 
 
         </div>
