@@ -35,11 +35,11 @@ function App() {
     setProductModal(productData);
     
     setShowModal(true);
-  }
+  };
 
   const handleHide = () => {
     setShowModal(false);
-  }
+  };
 
   return (
     <section className='center'>
