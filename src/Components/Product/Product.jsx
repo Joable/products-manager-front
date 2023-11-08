@@ -1,6 +1,6 @@
 import styles from './Product.module.css';
 
-function Product({data}){
+function Product({data, handleShow}){
     const {img, name, price} = data
 
     const displayImage = () => {
@@ -12,7 +12,7 @@ function Product({data}){
     };
 
     return(
-        <div className={styles.product}>
+        <button onClick={handleShow} className={styles.product}>
             <div className={styles.productImage}>
                 <img src={displayImage()} alt="Product" />
             </div>
@@ -22,7 +22,7 @@ function Product({data}){
 
                 <h4>{price}</h4>
             </div>
-        </div>
+        </button>
     );
 };
 

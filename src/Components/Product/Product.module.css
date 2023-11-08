@@ -4,6 +4,7 @@
     flex-direction: column;
     max-width: 200px;
     max-height: 300px;
+    padding: 0;
     border: 1px solid black;
 }
 

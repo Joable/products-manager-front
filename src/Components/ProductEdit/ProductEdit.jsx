@@ -2,15 +2,23 @@ import styles from './ProductEdit.module.css';
 
 import { useState, useEffect } from 'react';
 
-function ProductEdit(){
+function ProductEdit({showModal, handleHide}){
     const [modal, setModal] = useState("");
 
     useEffect(() => {
         setModal(document.getElementById('myModal'));
     }, []);
 
+    useEffect(() => {
+        if(showModal === true && modal !== ""){
+            onShow()
+        }else if(modal !== ""){
+            onClose()
+        }
+    },[showModal])
+
     const onShow = () => {
-        modal.style.display = "block"
+        modal.style.display = "block";
     };
 
     const onClose = () => {
@@ -18,20 +26,19 @@ function ProductEdit(){
     }
 
     window.onclick = function(event) {
-        if (event.target == modal) onClose();
+        if (event.target == modal) handleHide();
     };
 
 
     return(
         <>
-        <button onClick={onShow}>Open modal</button>
 
-       <div id='myModal' className={styles.modal}> 
+        <div id='myModal' className={styles.modal}> 
             <div className={styles.content}>
                 AAAAA
             </div> 
+        </div>
 
-       </div>
         </>
     );
 };

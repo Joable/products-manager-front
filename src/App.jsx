@@ -6,7 +6,8 @@ import Product from './Components/Product/Product';
 import ProductEdit from './Components/ProductEdit/ProductEdit';
 
 function App() {
-  const [products, setProducts] = useState([]);  
+  const [products, setProducts] = useState([]);
+  const [showModal, setShowModal] = useState(false); 
 
 
   useEffect(() => {
@@ -24,10 +25,18 @@ function App() {
     getProducts();
   }, []);
 
+
+  const handleShow = () => {
+    setShowModal(true)
+  }
+
+  const handleHide = () => {
+    setShowModal(false);
+  }
+
   return (
     <section className='center'>
       <h2>Product categories</h2>
-      <ProductEdit/>
 
       <div className='categoriesButtons'>
         <button>All</button>
@@ -36,8 +45,10 @@ function App() {
         <button>Lamps</button>
       </div>
 
+      <ProductEdit showModal={showModal} handleHide={handleHide}/>
+
       <div className='products'>
-        {products.map((product) => <Product data={product}/>)}
+        {products.map((product) => <Product data={product} handleShow={handleShow} />)}
       </div>
     </section>
   )
