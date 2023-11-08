@@ -1,6 +1,6 @@
 import styles from './ProductDisplay.module.css';
 
-function ProductDisplay(){
+function ProductDisplay({productData}){
     return(
         <div className={styles.content}>
 

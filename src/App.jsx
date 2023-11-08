@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { getProducts as productsService } from './Services/getProducts';
 
 import Product from './Components/Product/Product';
-import ProductEdit from './Components/ProductEdit/ProductEdit';
+import ProductModal from './Components/ProductModal/ProductModal';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -52,7 +52,7 @@ function App() {
         <button>Lamps</button>
       </div>
 
-      <ProductEdit productData={productModal} showModal={showModal} handleHide={handleHide}/>
+      <ProductModal productData={productModal} showModal={showModal} handleHide={handleHide}/>
 
       <div className='products'>
         {products.map((product) => <Product data={product} handleShow={handleShow} />)}

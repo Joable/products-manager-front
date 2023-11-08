@@ -1,3 +1,4 @@
+import ProductDisplay from '../ProductDisplay/ProductDisplay';
 import styles from './ProductModal.module.css';
 
 import { useState, useEffect } from 'react';
@@ -35,7 +36,8 @@ function ProductModal({productData, showModal, handleHide}){
     return(
         <div id='myModal' className={styles.modal}> 
             
-            
+            <ProductDisplay productData={productData}/>
+
         </div>
     )
 };
