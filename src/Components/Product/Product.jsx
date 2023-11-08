@@ -12,7 +12,7 @@ function Product({data, handleShow}){
     };
 
     return(
-        <button onClick={handleShow} className={styles.product}>
+        <button onClick={() => handleShow(data)} className={styles.product}>
             <div className={styles.productImage}>
                 <img src={displayImage()} alt="Product" />
             </div>

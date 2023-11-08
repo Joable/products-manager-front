@@ -2,7 +2,7 @@ import styles from './ProductEdit.module.css';
 
 import { useState, useEffect } from 'react';
 
-function ProductEdit({showModal, handleHide}){
+function ProductEdit({productData, showModal, handleHide}){
     const [modal, setModal] = useState("");
 
     useEffect(() => {
@@ -35,7 +35,8 @@ function ProductEdit({showModal, handleHide}){
 
         <div id='myModal' className={styles.modal}> 
             <div className={styles.content}>
-                AAAAA
+                {productData.name}
+                {productData.price}
             </div> 
         </div>
 

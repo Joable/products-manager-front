@@ -7,6 +7,7 @@ import ProductEdit from './Components/ProductEdit/ProductEdit';
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [productModal, setProductModal] = useState({})
   const [showModal, setShowModal] = useState(false); 
 
 
@@ -26,8 +27,10 @@ function App() {
   }, []);
 
 
-  const handleShow = () => {
-    setShowModal(true)
+  const handleShow = (productData) => {
+    setProductModal(productData);
+    
+    setShowModal(true);
   }
 
   const handleHide = () => {
@@ -45,7 +48,7 @@ function App() {
         <button>Lamps</button>
       </div>
 
-      <ProductEdit showModal={showModal} handleHide={handleHide}/>
+      <ProductEdit productData={productModal} showModal={showModal} handleHide={handleHide}/>
 
       <div className='products'>
         {products.map((product) => <Product data={product} handleShow={handleShow} />)}
