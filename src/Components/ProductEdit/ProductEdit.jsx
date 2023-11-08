@@ -18,7 +18,7 @@ function ProductEdit({productData, showModal, handleHide}){
     },[showModal])
 
     const onShow = () => {
-        modal.style.display = "block";
+        modal.style.display = "flex";
     };
 
     const onClose = () => {
@@ -34,10 +34,25 @@ function ProductEdit({productData, showModal, handleHide}){
         <>
 
         <div id='myModal' className={styles.modal}> 
+            
             <div className={styles.content}>
-                {productData.name}
-                {productData.price}
+
+                <div className={styles.image}>
+                    <img src={productData.img}/>
+                </div>
+
+                <div className={styles.productText}>
+                    <h2>
+                        {productData.name}
+                    </h2>
+
+                    <h3>
+                        {productData.price}
+                    </h3>
+                </div>
+
             </div> 
+
         </div>
 
         </>
