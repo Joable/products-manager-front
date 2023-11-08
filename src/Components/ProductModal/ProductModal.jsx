@@ -1,10 +1,12 @@
 import ProductDisplay from '../ProductDisplay/ProductDisplay';
+import ProductEdit from '../ProductEdit/ProductEdit';
 import styles from './ProductModal.module.css';
 
 import { useState, useEffect } from 'react';
 
 function ProductModal({productData, showModal, handleHide}){
     const [modal, setModal] = useState("");
+    const [displayEdit, setDisplayEdit] = useState(false)
 
     /* on mount, saves the 'myModal' element in the 'modal' state */
     useEffect(() => {
@@ -30,13 +32,24 @@ function ProductModal({productData, showModal, handleHide}){
     }
 
     window.onclick = function(event) {
-        if (event.target == modal) handleHide();
+        if (event.target == modal) {
+            handleHide();
+            setDisplayEdit(false)
+        };
     };
+
+    const switchDisplay = () => {
+        if(displayEdit){
+            return <ProductEdit setDisplayEdit={setDisplayEdit}/>
+        } else{
+            return <ProductDisplay productData={productData} setDisplayEdit={setDisplayEdit}/>
+        }
+    }
 
     return(
         <div id='myModal' className={styles.modal}> 
             
-            <ProductDisplay productData={productData}/>
+            {switchDisplay()}
 
         </div>
     )
