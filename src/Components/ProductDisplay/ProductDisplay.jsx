@@ -2,7 +2,7 @@ import styles from './ProductDisplay.module.css';
 
 function ProductDisplay({productData, setDisplayEdit}){
 
-    const onSwitch = () => {
+    const handleSwitch = () => {
         setDisplayEdit(true)
     }
 
@@ -26,7 +26,7 @@ function ProductDisplay({productData, setDisplayEdit}){
                 </div>
 
                 <div className={styles.buttons}>
-                    <button onClick={onSwitch}>Edit</button>
+                    <button onClick={handleSwitch}>Edit</button>
 
                     <button>Delete</button>
                 </div>
