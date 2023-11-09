@@ -38,12 +38,12 @@
     width: 100%;
 }
 
-.buttons button{
+.buttons > *{
     border: 2px solid black;
     width: 50%;
     height: 50px;
 }
 
-.buttons button:first-child{
+.buttons *:first-child{
     margin-right: 5px;
 }

@@ -1,11 +1,13 @@
 import styles from './ProductEdit.module.css';
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 import { editProduct } from '../../Services/editProduct';
+import { ChangeContext } from '../../Context/ChangeContext';
 
 function ProductEdit({productData, setDisplayEdit}){
     const [product, setProduct] = useState(productData);
+    const {change, setChange} = useContext(ChangeContext);
     const id = productData._id;
     
     const handleSwitch = () => {
@@ -28,9 +30,13 @@ function ProductEdit({productData, setDisplayEdit}){
 
         const edit = async () => {
             await editProduct(id, product);
+
+            setChange(true)
         };
 
         edit();
+
+
     };
 
     return(

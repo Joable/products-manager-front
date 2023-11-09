@@ -3,6 +3,7 @@ import './App.css'
 import { useEffect, useState } from 'react';
 
 import { getProducts as productsService } from './Services/getProducts';
+import { ChangeContext } from './Context/ChangeContext';
 
 import Product from './Components/Product/Product';
 import ProductModal from './Components/ProductModal/ProductModal';
@@ -11,6 +12,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [productModal, setProductModal] = useState({})
   const [showModal, setShowModal] = useState(false); 
+  const [change, setChange] = useState(ChangeContext);
 
 
   useEffect(() => {
@@ -30,6 +32,24 @@ function App() {
     getProducts();
   }, []);
 
+  useEffect(() => {
+
+    const getProducts = async () => {
+      try{
+        const response = await productsService();
+        setProducts(response);
+      }catch(e){
+        console.log(e);
+      };
+    };
+
+    if(change){
+      console.log("change")
+      getProducts();
+      setChange(false);
+    };
+      
+}, [change]);
 
   const handleShow = (productData) => {
     setProductModal(productData);
@@ -52,7 +72,9 @@ function App() {
         <button>Lamps</button>
       </div>
 
-      <ProductModal productData={productModal} showModal={showModal} handleHide={handleHide}/>
+      <ChangeContext.Provider value={{change, setChange}}>
+        <ProductModal productData={productModal} showModal={showModal} handleHide={handleHide}/>
+      </ChangeContext.Provider>
 
       <div className='products'>
         {products.map((product) => <Product data={product} handleShow={handleShow} />)}
