@@ -2,9 +2,11 @@ import styles from './ProductEdit.module.css';
 
 import { useState } from 'react'
 
+import { editProduct } from '../../Services/editProduct';
+
 function ProductEdit({productData, setDisplayEdit}){
     const [product, setProduct] = useState(productData);
-    
+    const id = productData._id;
     
     const handleSwitch = () => {
         setDisplayEdit(false)
@@ -19,8 +21,17 @@ function ProductEdit({productData, setDisplayEdit}){
             [target.name] : value
         })
 
-        console.log(product[target.name])
-    }
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const edit = async () => {
+            await editProduct(id, product);
+        };
+
+        edit();
+    };
 
     return(
         <div className={styles.content}>
@@ -29,7 +40,7 @@ function ProductEdit({productData, setDisplayEdit}){
                 <img src={productData.img}/>
             </div>
 
-            <form className={styles.formWrapper}>
+            <form className={styles.formWrapper} onSubmit={handleSubmit} autoComplete='off'>
 
                 <div className={styles.input}>
                     <label htmlFor="">Name:</label>
@@ -42,7 +53,7 @@ function ProductEdit({productData, setDisplayEdit}){
                 <div className={styles.buttons}>
                     <button onClick={handleSwitch}>Cancel</button>
                     
-                    <button>Save Changes</button>
+                    <input type='submit' value="Save Changes"/>
                 </div>
 
             </form>
