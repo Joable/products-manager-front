@@ -40,7 +40,7 @@ function ProductModal({productData, showModal, handleHide}){
 
     const switchDisplay = () => {
         if(displayEdit){
-            return <ProductEdit setDisplayEdit={setDisplayEdit}/>
+            return <ProductEdit productData={productData} setDisplayEdit={setDisplayEdit}/>
         } else{
             return <ProductDisplay productData={productData} setDisplayEdit={setDisplayEdit}/>
         }
