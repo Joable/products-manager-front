@@ -8,13 +8,15 @@ import { ChangeContext } from './Context/ChangeContext';
 import Product from './Components/Product/Product';
 import ProductModal from './Components/ProductModal/ProductModal';
 
+// USAR UN GetById PARA CONSEGUIR LA DATA DE UN PRODUCTO EN ESPECIFICO, SINO ES UN QUILOMBO
+
 function App() {
   const [products, setProducts] = useState([]);
   const [productModal, setProductModal] = useState({})
   const [showModal, setShowModal] = useState(false); 
   const [change, setChange] = useState(ChangeContext);
 
-
+  //gets the products from the data base on mount
   useEffect(() => {
     const getProducts = async () => {
       try{
@@ -32,8 +34,8 @@ function App() {
     getProducts();
   }, []);
 
+  //when 'change' changes to true, refreshes the products
   useEffect(() => {
-
     const getProducts = async () => {
       try{
         const response = await productsService();
@@ -44,12 +46,11 @@ function App() {
     };
 
     if(change){
-      console.log("change")
       getProducts();
+
       setChange(false);
     };
-      
-}, [change]);
+  }, [change]);
 
   const handleShow = (productData) => {
     setProductModal(productData);

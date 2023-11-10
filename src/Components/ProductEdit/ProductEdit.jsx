@@ -1,6 +1,9 @@
 import styles from './ProductEdit.module.css';
 
-import { useState, useContext } from 'react'
+import { 
+    useState, 
+    useContext 
+} from 'react';
 
 import { editProduct } from '../../Services/editProduct';
 import { ChangeContext } from '../../Context/ChangeContext';
@@ -11,7 +14,7 @@ function ProductEdit({productData, setDisplayEdit}){
     const id = productData._id;
     
     const handleSwitch = () => {
-        setDisplayEdit(false)
+        setDisplayEdit(false);
     };
 
     const handleChange = (event) => {
@@ -31,40 +34,38 @@ function ProductEdit({productData, setDisplayEdit}){
         const edit = async () => {
             await editProduct(id, product);
 
-            setChange(true)
+            setChange(true);
+
+            handleSwitch();
         };
 
         edit();
-
-
     };
 
     return(
-        <div className={styles.content}>
+        <>
+        <div className={styles.image}>
+            <img src={productData.img}/>
+        </div>
 
-            <div className={styles.image}>
-                <img src={productData.img}/>
+        <form className={styles.formWrapper} onSubmit={handleSubmit} autoComplete='off'>
+
+            <div className={styles.input}>
+                <label htmlFor="">Name:</label>
+                <input type="text" name="name" value={product.name} onChange={handleChange}/>
+
+                <label htmlFor="">Price:</label>
+                <input type="text" name="price" value={product.price} onChange={handleChange}/>
             </div>
 
-            <form className={styles.formWrapper} onSubmit={handleSubmit} autoComplete='off'>
+            <div className={styles.buttons}>
+                <button onClick={handleSwitch}>Cancel</button>
+                
+                <input type='submit' value="Save Changes"/>
+            </div>
 
-                <div className={styles.input}>
-                    <label htmlFor="">Name:</label>
-                    <input type="text" name="name" value={product.name} onChange={handleChange}/>
-
-                    <label htmlFor="">Price:</label>
-                    <input type="text" name="price" value={product.price} onChange={handleChange}/>
-                </div>
-
-                <div className={styles.buttons}>
-                    <button onClick={handleSwitch}>Cancel</button>
-                    
-                    <input type='submit' value="Save Changes"/>
-                </div>
-
-            </form>
-
-        </div>
+        </form>
+        </>
     );
 };
 
