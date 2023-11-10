@@ -12,20 +12,20 @@ function ProductModal({productData, showModal, handleHide}){
     useEffect(() => setModal(document.getElementById('myModal')), []);
 
 
-    /* when 'showModal' changes, decides if to call the 'onShow' or 'onClose' function */
+    /* when 'showModal' changes, decides if to call the 'handleShow' or 'handleClose' function */
     useEffect(() => {
         if(showModal === true && modal !== ""){
-            onShow();
+            handleShow();
         }else if(modal !== ""){
-            onClose();
+            handleClose();
         }
     },[showModal]);
 
-    const onShow = () => {
+    const handleShow = () => {
         modal.style.display = "flex";
     };
 
-    const onClose = () => {
+    const handleClose = () => {
         modal.style.display = "none";
     };
 
@@ -41,7 +41,7 @@ function ProductModal({productData, showModal, handleHide}){
         if(displayEdit){
             return <ProductEdit productData={productData} setDisplayEdit={setDisplayEdit}/>
         } else{
-            return <ProductDisplay id={productData._id} setDisplayEdit={setDisplayEdit}/>
+            return <ProductDisplay id={productData._id} setDisplayEdit={setDisplayEdit} handleClose={handleClose}/>
         }
     }
 

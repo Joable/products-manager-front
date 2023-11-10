@@ -2,18 +2,22 @@ import styles from './ProductDisplay.module.css';
 
 import { 
     useEffect, 
-    useState 
+    useState,
+    useContext 
 } from 'react';
+
+import { ChangeContext } from '../../Context/ChangeContext';
 
 import { getProductsById } from '../../Services/getProducts';
 import { deleteProduct } from '../../Services/deleteProduct';
 
-function ProductDisplay({id, setDisplayEdit}){
+function ProductDisplay({id, setDisplayEdit, handleClose}){
     const [product, setProduct] = useState({
         name:"",
         price:"",
         img:""
     });
+    const {change, setChange} = useContext(ChangeContext);
 
     useEffect(() => {
         const getProduct = async () =>{
@@ -32,6 +36,10 @@ function ProductDisplay({id, setDisplayEdit}){
     const handleDelete = () =>{
         const invokeDelete = async() =>{
             await deleteProduct(id);
+
+            handleClose();
+            
+            setChange(true);
         };
 
         invokeDelete();
