@@ -8,10 +8,10 @@ import {
 import { editProduct } from '../../Services/editProduct';
 import { ChangeContext } from '../../Context/ChangeContext';
 
-function ProductEdit({productData, setDisplayEdit}){
-    const [product, setProduct] = useState(productData);
+function ProductEdit({product, setDisplayEdit}){
+    const [productData, setProductData] = useState(product);
     const {change, setChange} = useContext(ChangeContext);
-    const id = productData._id;
+    const id = product._id;
     
     const handleSwitch = () => {
         setDisplayEdit(false);
@@ -21,8 +21,8 @@ function ProductEdit({productData, setDisplayEdit}){
         const target = event.target;
         const value = target.value;
 
-        setProduct({
-            ...product,
+        setProductData({
+            ...productData,
             [target.name] : value
         })
 
@@ -32,7 +32,7 @@ function ProductEdit({productData, setDisplayEdit}){
         event.preventDefault();
 
         const edit = async () => {
-            await editProduct(id, product);
+            await editProduct(id, productData);
 
             setChange(true);
 
@@ -52,10 +52,10 @@ function ProductEdit({productData, setDisplayEdit}){
 
             <div className={styles.input}>
                 <label htmlFor="">Name:</label>
-                <input type="text" name="name" value={product.name} onChange={handleChange}/>
+                <input type="text" name="name" value={productData.name} onChange={handleChange}/>
 
                 <label htmlFor="">Price:</label>
-                <input type="text" name="price" value={product.price} onChange={handleChange}/>
+                <input type="text" name="price" value={productData.price} onChange={handleChange}/>
             </div>
 
             <div className={styles.buttons}>

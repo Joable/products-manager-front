@@ -8,8 +8,6 @@ import { ChangeContext } from './Context/ChangeContext';
 import Product from './Components/Product/Product';
 import ProductModal from './Components/ProductModal/ProductModal';
 
-//AHORA COMO LOS DATOS DEL PRODUCTO SE GETEAN DESDE EL MISMO MODAL, TENGO QUE CAMBIAR EL showModal
-
 function App() {
   const [products, setProducts] = useState([]);
   const [productModal, setProductModal] = useState({})
@@ -74,7 +72,7 @@ function App() {
       </div>
 
       <ChangeContext.Provider value={{change, setChange}}>
-        <ProductModal productData={productModal} showModal={showModal} handleHide={handleHide}/>
+        <ProductModal id={productModal._id} showModal={showModal} handleHide={handleHide}/>
       </ChangeContext.Provider>
 
       <div className='products'>

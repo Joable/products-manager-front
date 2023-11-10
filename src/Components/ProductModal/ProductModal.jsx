@@ -2,11 +2,36 @@ import ProductDisplay from '../ProductDisplay/ProductDisplay';
 import ProductEdit from '../ProductEdit/ProductEdit';
 import styles from './ProductModal.module.css';
 
-import { useState, useEffect } from 'react';
+import { 
+    useState,
+    useEffect, 
+    useContext
+} from 'react';
 
-function ProductModal({productData, showModal, handleHide}){
+import { ChangeContext } from '../../Context/ChangeContext';
+
+import { getProductsById } from '../../Services/getProducts';
+
+function ProductModal({id, showModal, handleHide}){
+    const [product, setProduct] = useState({
+        name:"",
+        price:"",
+        img:""
+    });
     const [modal, setModal] = useState("");
-    const [displayEdit, setDisplayEdit] = useState(false)
+    const [displayEdit, setDisplayEdit] = useState(false);
+    const {change, setChange} = useContext(ChangeContext);
+
+    // fetches the product by id when 'id' changes
+    useEffect(() => {
+        const getProduct = async () =>{
+            const response = await getProductsById(id);
+
+            setProduct(response[0]);
+        };
+
+        getProduct();
+    }, [id, change]);
 
     /* on mount, saves the 'myModal' element in the 'modal' state */
     useEffect(() => setModal(document.getElementById('myModal')), []);
@@ -39,9 +64,9 @@ function ProductModal({productData, showModal, handleHide}){
 
     const switchDisplay = () => {
         if(displayEdit){
-            return <ProductEdit productData={productData} setDisplayEdit={setDisplayEdit}/>
+            return <ProductEdit product={product} setDisplayEdit={setDisplayEdit}/>
         } else{
-            return <ProductDisplay id={productData._id} setDisplayEdit={setDisplayEdit} handleClose={handleClose}/>
+            return <ProductDisplay product={product} setDisplayEdit={setDisplayEdit} handleClose={handleClose}/>
         }
     }
 
