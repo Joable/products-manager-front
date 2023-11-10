@@ -6,6 +6,7 @@ import {
 } from 'react';
 
 import { getProductsById } from '../../Services/getProducts';
+import { deleteProduct } from '../../Services/deleteProduct';
 
 function ProductDisplay({id, setDisplayEdit}){
     const [product, setProduct] = useState({
@@ -28,6 +29,14 @@ function ProductDisplay({id, setDisplayEdit}){
         setDisplayEdit(true);
     };
 
+    const handleDelete = () =>{
+        const invokeDelete = async() =>{
+            await deleteProduct(id);
+        };
+
+        invokeDelete();
+    }
+
     return(
         <>
         <div className={styles.image}>
@@ -49,7 +58,7 @@ function ProductDisplay({id, setDisplayEdit}){
             <div className={styles.buttons}>
                 <button onClick={handleSwitch}>Edit</button>
 
-                <button>Delete</button>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
     </>

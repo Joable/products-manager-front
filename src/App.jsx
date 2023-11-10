@@ -8,8 +8,6 @@ import { ChangeContext } from './Context/ChangeContext';
 import Product from './Components/Product/Product';
 import ProductModal from './Components/ProductModal/ProductModal';
 
-// USAR UN GetById PARA CONSEGUIR LA DATA DE UN PRODUCTO EN ESPECIFICO, SINO ES UN QUILOMBO
-
 function App() {
   const [products, setProducts] = useState([]);
   const [productModal, setProductModal] = useState({})

@@ -9,10 +9,7 @@ function ProductModal({productData, showModal, handleHide}){
     const [displayEdit, setDisplayEdit] = useState(false)
 
     /* on mount, saves the 'myModal' element in the 'modal' state */
-    useEffect(() => {
-        setModal(document.getElementById('myModal'));
-        console.log(productData)
-    }, []);
+    useEffect(() => setModal(document.getElementById('myModal')), []);
 
 
     /* when 'showModal' changes, decides if to call the 'onShow' or 'onClose' function */
@@ -30,7 +27,7 @@ function ProductModal({productData, showModal, handleHide}){
 
     const onClose = () => {
         modal.style.display = "none";
-    }
+    };
 
     window.onclick = function(event) {
         if (event.target == modal) {
