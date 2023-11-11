@@ -21,6 +21,9 @@ function ProductModal({id, showModal, handleHide}){
     const [modal, setModal] = useState("");
     const [displayEdit, setDisplayEdit] = useState(false);
     const {change, setChange} = useContext(ChangeContext);
+    
+    /* on mount, saves the 'myModal' element in the 'modal' state */
+    useEffect(() => setModal(document.getElementById('myModal')), []);
 
     // fetches the product by id when 'id' or 'change' changes
     useEffect(() => {
@@ -28,18 +31,19 @@ function ProductModal({id, showModal, handleHide}){
             const response = await getProductsById(id);
 
             setProduct(response[0]);
-        };
 
+        };
+        
         if(id) getProduct();
     }, [id, change]);
-
-    /* on mount, saves the 'myModal' element in the 'modal' state */
-    useEffect(() => setModal(document.getElementById('myModal')), []);
-
-
+    
+    
+    
     /* when 'showModal' changes, decides if to call the 'handleShow' or 'handleClose' function */
     useEffect(() => {
         if(showModal === true && modal !== ""){
+            setModal(document.getElementById('myModal'));
+
             handleShow();
         }else if(modal !== ""){
             handleClose();
