@@ -57,10 +57,6 @@ function App() {
     setShowModal(true);
   };
 
-  const handleHide = () => {
-    setShowModal(false);
-  };
-
   return (
     <section className='center'>
       <h2>Product categories</h2>
@@ -73,7 +69,7 @@ function App() {
       </div>
 
       <ChangeContext.Provider value={{change, setChange}}>
-        <ProductModal id={productModal._id} showModal={showModal} setShowModal={setShowModal} handleHide={handleHide}/>
+        <ProductModal id={productModal._id} showModal={showModal} setShowModal={setShowModal}/>
         
         <CreateProduct/>
       </ChangeContext.Provider>

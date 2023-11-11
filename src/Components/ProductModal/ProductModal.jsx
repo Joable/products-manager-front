@@ -12,7 +12,7 @@ import { ChangeContext } from '../../Context/ChangeContext';
 
 import { getProductsById } from '../../Services/getProducts';
 
-function ProductModal({id, showModal, setShowModal, handleHide}){
+function ProductModal({id, showModal, setShowModal}){
     const [product, setProduct] = useState({
         name:"",
         price:"",
@@ -47,17 +47,10 @@ function ProductModal({id, showModal, setShowModal, handleHide}){
 
         }else if(modal !== ""){
             modal.style.display = "none";
-        }
-    },[showModal]);
-
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            handleHide();
-
+            
             setDisplayEdit(false);
         };
-    };
+    },[showModal]);
 
     const switchDisplay = () => {
         if(displayEdit){
@@ -68,7 +61,7 @@ function ProductModal({id, showModal, setShowModal, handleHide}){
     }
 
     return(
-        <div id='myModal' className={styles.modal}> 
+        <div id='myModal' className={styles.modal} onClick={() => setShowModal(false)}> 
             
             <div className={styles.content}>
                 {switchDisplay()}

@@ -59,7 +59,7 @@ function ProductEdit({product, setDisplayEdit}){
             </div>
 
             <div className={styles.buttons}>
-                <button onClick={handleSwitch}>Cancel</button>
+                <button type='button' onClick={handleSwitch}>Cancel</button>
                 
                 <input type='submit' value="Save Changes"/>
             </div>

@@ -22,18 +22,16 @@ function CreateProduct(){
         setModal(document.getElementById('newProduct'));
     }, []);
 
+    useEffect(() => {
+        setModal(document.getElementById('newProduct'));
+    }, [change]);
+
     const handleShow = () => {
         modal.style.display = "flex";
     };
 
     const handleClose = () => {
         modal.style.display = "none";
-    };
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            handleClose();
-        };
     };
 
     const handleChange = (event) => {
@@ -71,7 +69,7 @@ function CreateProduct(){
             Add new product
         </button>
 
-        <div id='newProduct' className={styles.modal}> 
+        <div id='newProduct' className={styles.modal} onClick={handleClose}> 
                     
             <div className={styles.content}>
 
@@ -83,7 +81,7 @@ function CreateProduct(){
                     <input type="text" name='price' value={form.price} onChange={handleChange}/>
 
                     <div className={styles.buttons}>
-                        <button onClick={handleClose}>Cancel</button>
+                        <button type='button' onClick={handleClose}>Cancel</button>
 
                         <input type="submit" value="Save"/>
                     </div>
