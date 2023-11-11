@@ -30,7 +30,7 @@ function ProductModal({id, showModal, handleHide}){
             setProduct(response[0]);
         };
 
-        getProduct();
+        if(id) getProduct();
     }, [id, change]);
 
     /* on mount, saves the 'myModal' element in the 'modal' state */
