@@ -5,8 +5,14 @@ import {
     useState
 } from 'react';
 
+import { createProduct } from '../Services/createProduct';
+
 function CreateProduct(){
     const [modal, setModal] = useState("");
+    const [form, setForm] = useState({
+        name:"",
+        price:""
+    });
 
     useEffect(() => {
         setModal(document.getElementById('newProduct'));
@@ -26,6 +32,26 @@ function CreateProduct(){
         };
     };
 
+    const handleChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+
+        setForm({
+            ...form,
+            [target.name] : value
+        });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const create = async () =>{
+            await createProduct(form);
+        }
+
+        create();
+    }
+
     return(
         <>
         <button onClick={handleShow}>
@@ -35,16 +61,17 @@ function CreateProduct(){
         <div id='newProduct' className={styles.modal}> 
                     
             <div className={styles.content}>
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={handleSubmit} autoComplete='off'>
                     <label>Name:</label>
-                    <input type="text" />
+                    <input type="text" name='name' value={form.name} onChange={handleChange}/>
 
                     <label >Price:</label>
-                    <input type="text"/>
+                    <input type="text" name='price' value={form.price} onChange={handleChange}/>
 
                     <div className={styles.buttons}>
                         <button>Cancel</button>
-                        <button>Save</button>
+
+                        <input type="submit" value="Save"/>
                     </div>
                 </form>
             </div>
