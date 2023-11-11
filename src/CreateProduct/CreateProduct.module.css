@@ -1,0 +1,48 @@
+.modal{
+    position: fixed; 
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+/* content */
+.content {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    width: 50%;
+    max-height: 80%; 
+}
+
+/* form */
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+/* buttons */
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.buttons > *{
+    border: 2px solid black;
+    width: 50%;
+    height: 50px;
+}
+
+.buttons *:first-child{
+    margin-right: 5px;
+}

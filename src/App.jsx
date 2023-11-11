@@ -7,6 +7,7 @@ import { ChangeContext } from './Context/ChangeContext';
 
 import Product from './Components/Product/Product';
 import ProductModal from './Components/ProductModal/ProductModal';
+import CreateProduct from './CreateProduct/CreateProduct';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -74,6 +75,8 @@ function App() {
       <ChangeContext.Provider value={{change, setChange}}>
         <ProductModal id={productModal._id} showModal={showModal} handleHide={handleHide}/>
       </ChangeContext.Provider>
+
+      <CreateProduct/>
 
       <div className='products'>
         {products.map((product) => <Product data={product} handleShow={handleShow} />)}

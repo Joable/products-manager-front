@@ -22,7 +22,7 @@ function ProductModal({id, showModal, handleHide}){
     const [displayEdit, setDisplayEdit] = useState(false);
     const {change, setChange} = useContext(ChangeContext);
 
-    // fetches the product by id when 'id' changes
+    // fetches the product by id when 'id' or 'change' changes
     useEffect(() => {
         const getProduct = async () =>{
             const response = await getProductsById(id);

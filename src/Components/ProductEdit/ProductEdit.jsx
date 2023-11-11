@@ -51,10 +51,10 @@ function ProductEdit({product, setDisplayEdit}){
         <form className={styles.formWrapper} onSubmit={handleSubmit} autoComplete='off'>
 
             <div className={styles.input}>
-                <label htmlFor="">Name:</label>
+                <label>Name:</label>
                 <input type="text" name="name" value={productData.name} onChange={handleChange}/>
 
-                <label htmlFor="">Price:</label>
+                <label>Price:</label>
                 <input type="text" name="price" value={productData.price} onChange={handleChange}/>
             </div>
 
