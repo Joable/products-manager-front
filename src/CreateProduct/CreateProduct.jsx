@@ -2,8 +2,11 @@ import styles from './CreateProduct.module.css';
 
 import { 
     useEffect,
-    useState
+    useState,
+    useContext
 } from 'react';
+
+import { ChangeContext } from '../Context/ChangeContext';
 
 import { createProduct } from '../Services/createProduct';
 
@@ -13,10 +16,11 @@ function CreateProduct(){
         name:"",
         price:""
     });
+    const {change, setChange} = useContext(ChangeContext);
 
     useEffect(() => {
         setModal(document.getElementById('newProduct'));
-    }, [])
+    }, []);
 
     const handleShow = () => {
         modal.style.display = "flex";
@@ -47,6 +51,15 @@ function CreateProduct(){
 
         const create = async () =>{
             await createProduct(form);
+
+            setChange(true);
+
+            handleClose();
+
+            setForm({
+                name:"",
+                price:""
+            })
         }
 
         create();
@@ -61,6 +74,7 @@ function CreateProduct(){
         <div id='newProduct' className={styles.modal}> 
                     
             <div className={styles.content}>
+
                 <form className={styles.form} onSubmit={handleSubmit} autoComplete='off'>
                     <label>Name:</label>
                     <input type="text" name='name' value={form.name} onChange={handleChange}/>
@@ -69,11 +83,12 @@ function CreateProduct(){
                     <input type="text" name='price' value={form.price} onChange={handleChange}/>
 
                     <div className={styles.buttons}>
-                        <button>Cancel</button>
+                        <button onClick={handleClose}>Cancel</button>
 
                         <input type="submit" value="Save"/>
                     </div>
                 </form>
+
             </div>
 
         </div>

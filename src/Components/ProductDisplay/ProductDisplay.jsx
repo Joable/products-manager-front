@@ -1,15 +1,24 @@
 import styles from './ProductDisplay.module.css';
 
 import { 
-    useContext 
+    useContext, useEffect, useState 
 } from 'react';
 
 import { ChangeContext } from '../../Context/ChangeContext';
 
 import { deleteProduct } from '../../Services/deleteProduct';
 
-function ProductDisplay({product, setDisplayEdit, handleClose}){
+function ProductDisplay({product, setDisplayEdit, setShowModal}){
+    const [productData, setProductData] = useState({
+        name:"",
+        price:"",
+        img:""
+    });
     const {change, setChange} = useContext(ChangeContext);
+
+    useEffect(() => {
+        if(product) setProductData(product)
+    },[product])
 
     const handleSwitch = () => {
         setDisplayEdit(true);
@@ -17,31 +26,31 @@ function ProductDisplay({product, setDisplayEdit, handleClose}){
 
     const handleDelete = () =>{
         const invokeDelete = async() =>{
-            await deleteProduct(id);
+            await deleteProduct(productData._id);
 
-            handleClose();
+            setShowModal(false)
 
             setChange(true);
         };
 
         invokeDelete();
-    }
+    };
 
     return(
         <>
         <div className={styles.image}>
-            <img src={product.img}/>
+            <img src={productData.img}/>
         </div>
 
         <div className={styles.textWrapper}>
 
-            <div className={styles.productText}>
+            <div className={styles.productDataText}>
                 <h2>
-                    {product.name}
+                    {productData.name}
                 </h2>
 
                 <h3>
-                    {product.price}
+                    {productData.price}
                 </h3>
             </div>
 

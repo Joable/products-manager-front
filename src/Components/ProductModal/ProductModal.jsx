@@ -12,7 +12,7 @@ import { ChangeContext } from '../../Context/ChangeContext';
 
 import { getProductsById } from '../../Services/getProducts';
 
-function ProductModal({id, showModal, handleHide}){
+function ProductModal({id, showModal, setShowModal, handleHide}){
     const [product, setProduct] = useState({
         name:"",
         price:"",
@@ -38,25 +38,18 @@ function ProductModal({id, showModal, handleHide}){
     }, [id, change]);
     
     
-    
     /* when 'showModal' changes, decides if to call the 'handleShow' or 'handleClose' function */
     useEffect(() => {
         if(showModal === true && modal !== ""){
             setModal(document.getElementById('myModal'));
 
-            handleShow();
+            modal.style.display = "flex";
+
         }else if(modal !== ""){
-            handleClose();
+            modal.style.display = "none";
         }
     },[showModal]);
 
-    const handleShow = () => {
-        modal.style.display = "flex";
-    };
-
-    const handleClose = () => {
-        modal.style.display = "none";
-    };
 
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -70,7 +63,7 @@ function ProductModal({id, showModal, handleHide}){
         if(displayEdit){
             return <ProductEdit product={product} setDisplayEdit={setDisplayEdit}/>
         } else{
-            return <ProductDisplay product={product} setDisplayEdit={setDisplayEdit} handleClose={handleClose}/>
+            return <ProductDisplay product={product} setDisplayEdit={setDisplayEdit} setShowModal={setShowModal}/>
         }
     }
 

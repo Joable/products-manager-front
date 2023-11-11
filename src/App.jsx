@@ -73,10 +73,11 @@ function App() {
       </div>
 
       <ChangeContext.Provider value={{change, setChange}}>
-        <ProductModal id={productModal._id} showModal={showModal} handleHide={handleHide}/>
+        <ProductModal id={productModal._id} showModal={showModal} setShowModal={setShowModal} handleHide={handleHide}/>
+        
+        <CreateProduct/>
       </ChangeContext.Provider>
 
-      <CreateProduct/>
 
       <div className='products'>
         {products.map((product) => <Product data={product} handleShow={handleShow} />)}
