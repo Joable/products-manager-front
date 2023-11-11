@@ -30,8 +30,8 @@ function CreateProduct(){
         modal.style.display = "flex";
     };
 
-    const handleClose = () => {
-        modal.style.display = "none";
+    const handleClose = (event) => {
+        if(event.target == modal) modal.style.display = "none";
     };
 
     const handleChange = (event) => {

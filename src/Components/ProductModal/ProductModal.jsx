@@ -41,16 +41,18 @@ function ProductModal({id, showModal, setShowModal}){
     /* when 'showModal' changes, decides if to call the 'handleShow' or 'handleClose' function */
     useEffect(() => {
         if(showModal === true && modal !== ""){
-            setModal(document.getElementById('myModal'));
-
             modal.style.display = "flex";
-
+            
         }else if(modal !== ""){
             modal.style.display = "none";
             
             setDisplayEdit(false);
         };
     },[showModal]);
+
+    const handleClose = (event) => {
+        if(event.target == modal) setShowModal(false);
+    }
 
     const switchDisplay = () => {
         if(displayEdit){
@@ -61,7 +63,7 @@ function ProductModal({id, showModal, setShowModal}){
     }
 
     return(
-        <div id='myModal' className={styles.modal} onClick={() => setShowModal(false)}> 
+        <div id='myModal' className={styles.modal} onClick={handleClose}> 
             
             <div className={styles.content}>
                 {switchDisplay()}
