@@ -1,3 +1,4 @@
+/* selector */
 .selector{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -10,6 +11,7 @@
     overflow-x: hidden;
 }
 
+/* image */
 .image{
     background-color: rgb(231, 230, 230);
     border: 1px solid black;
@@ -24,4 +26,11 @@
 .image > img {
     width: 100%;
     height: 100%;
+}
+
+/* selected */
+.selected{
+    background-color: rgb(204, 204, 204);
+    border: 2px solid black;
+    border-radius: 5px;
 }

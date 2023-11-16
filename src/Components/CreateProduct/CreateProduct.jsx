@@ -64,7 +64,7 @@ function CreateProduct(){
                 name:"",
                 price:"",
                 img:""
-            })
+            });
         }
 
         create();
