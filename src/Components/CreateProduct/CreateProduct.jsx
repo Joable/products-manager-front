@@ -6,9 +6,10 @@ import {
     useContext
 } from 'react';
 
-import { ChangeContext } from '../Context/ChangeContext';
+import { ChangeContext } from '../../Context/ChangeContext';
+import { createProduct } from '../../Services/createProduct';
 
-import { createProduct } from '../Services/createProduct';
+import ImageSelector from '../ImageSelector/ImageSelector';
 
 function CreateProduct(){
     const [modal, setModal] = useState("");
@@ -78,10 +79,13 @@ function CreateProduct(){
             <div className={styles.content}>
 
                 <form className={styles.form} onSubmit={handleSubmit} autoComplete='off'>
+                    
+                    <ImageSelector/>
+
                     <label>Name:</label>
                     <input type="text" name='name' value={form.name} onChange={handleChange}/>
 
-                    <label >Price:</label>
+                    <label>Price:</label>
                     <input type="text" name='price' value={form.price} onChange={handleChange}/>
 
                     <div className={styles.buttons}>

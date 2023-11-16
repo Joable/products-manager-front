@@ -7,7 +7,7 @@ import { ChangeContext } from './Context/ChangeContext';
 
 import Product from './Components/Product/Product';
 import ProductModal from './Components/ProductModal/ProductModal';
-import CreateProduct from './CreateProduct/CreateProduct';
+import CreateProduct from './Components/CreateProduct/CreateProduct';
 
 function App() {
   const [products, setProducts] = useState([]);
