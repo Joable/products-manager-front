@@ -30,9 +30,13 @@ function CreateProduct(){
         modal.style.display = "flex";
     };
 
-    const handleClose = (event) => {
-        if(event.target == modal) modal.style.display = "none";
+    const handleClose = () => {
+        modal.style.display = "none";
     };
+
+    const handleClickOutside = (event) => {
+        if(event.target == modal) handleClose();
+    }
 
     const handleChange = (event) => {
         const target = event.target;
@@ -69,7 +73,7 @@ function CreateProduct(){
             Add new product
         </button>
 
-        <div id='newProduct' className={styles.modal} onClick={handleClose}> 
+        <div id='newProduct' className={styles.modal} onClick={handleClickOutside}> 
                     
             <div className={styles.content}>
 

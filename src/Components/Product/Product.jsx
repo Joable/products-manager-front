@@ -1,7 +1,7 @@
 import styles from './Product.module.css';
 
 function Product({data, handleShow}){
-    const {img, name, price} = data
+    const {img, name, price_currency} = data
 
     const displayImage = () => {
         if(!img){
@@ -20,7 +20,7 @@ function Product({data, handleShow}){
             <div className={styles.productText}>
                 <h3>{name}</h3>
 
-                <h4>{price}</h4>
+                <h4>{price_currency}</h4>
             </div>
         </button>
     );
