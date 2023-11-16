@@ -15,7 +15,8 @@ function CreateProduct(){
     const [modal, setModal] = useState("");
     const [form, setForm] = useState({
         name:"",
-        price:""
+        price:"",
+        img:""
     });
     const {change, setChange} = useContext(ChangeContext);
 
@@ -61,7 +62,8 @@ function CreateProduct(){
 
             setForm({
                 name:"",
-                price:""
+                price:"",
+                img:""
             })
         }
 
@@ -81,14 +83,14 @@ function CreateProduct(){
                 <form className={styles.form} onSubmit={handleSubmit} autoComplete='off'>
 
                     <div className={styles.selectors}>
-                        <ImageSelector/>
+                        <ImageSelector form={form} setForm={setForm}/>
 
                         <div className={styles.inputs}>
                             <label>Name:</label>
                             <input type="text" name='name' value={form.name} onChange={handleChange}/>
 
                             <label>Price:</label>
-                            <input type="text" name='price' value={form.price} onChange={handleChange}/>
+                            <input type="number" name='price' value={form.price} onChange={handleChange}/>
                         </div>
                     </div>
 
