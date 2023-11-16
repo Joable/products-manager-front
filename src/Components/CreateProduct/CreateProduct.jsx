@@ -79,14 +79,18 @@ function CreateProduct(){
             <div className={styles.content}>
 
                 <form className={styles.form} onSubmit={handleSubmit} autoComplete='off'>
-                    
-                    <ImageSelector/>
 
-                    <label>Name:</label>
-                    <input type="text" name='name' value={form.name} onChange={handleChange}/>
+                    <div className={styles.selectors}>
+                        <ImageSelector/>
 
-                    <label>Price:</label>
-                    <input type="text" name='price' value={form.price} onChange={handleChange}/>
+                        <div className={styles.inputs}>
+                            <label>Name:</label>
+                            <input type="text" name='name' value={form.name} onChange={handleChange}/>
+
+                            <label>Price:</label>
+                            <input type="text" name='price' value={form.price} onChange={handleChange}/>
+                        </div>
+                    </div>
 
                     <div className={styles.buttons}>
                         <button type='button' onClick={handleClose}>Cancel</button>
