@@ -1,11 +1,3 @@
-/* productText */
-.productText{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
-
 /* image */
 .image{
     width: 50%;
@@ -17,6 +9,14 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+/* productText */
+.productText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 /* buttons */

@@ -17,7 +17,7 @@ function ProductDisplay({product, setDisplayEdit, setShowModal}){
     const {change, setChange} = useContext(ChangeContext);
 
     useEffect(() => {
-        if(product) setProductData(product)
+        if(product) setProductData(product);
     },[product])
 
     const handleSwitch = () => {
@@ -39,12 +39,12 @@ function ProductDisplay({product, setDisplayEdit, setShowModal}){
     return(
         <>
         <div className={styles.image}>
-            <img src={productData.img}/>
+            <img src={`img/${productData.img}`}/>
         </div>
 
         <div className={styles.textWrapper}>
 
-            <div className={styles.productDataText}>
+            <div className={styles.productText}>
                 <h2>
                     {productData.name}
                 </h2>
