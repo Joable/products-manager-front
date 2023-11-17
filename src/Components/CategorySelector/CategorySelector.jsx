@@ -1,11 +1,11 @@
 import styles from './CategorySelector.module.css';
 
-function CategorySelector(){
+function CategorySelector({handleChange}){
     return(
         <>
-        <label for="cars">Choose a category:</label>
+        <label htmlFor="categories">Choose a category:</label>
 
-        <select name='categories'>
+        <select name='category' onChange={handleChange}>
             <option value="headphones">Headphones</option>
 
             <option value="keyboards">Keyboards</option>

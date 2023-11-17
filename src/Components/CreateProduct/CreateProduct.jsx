@@ -17,7 +17,8 @@ function CreateProduct(){
     const [form, setForm] = useState({
         name:"",
         price:"",
-        img:""
+        img:"",
+        category:"headphones"
     });
     const {change, setChange} = useContext(ChangeContext);
 
@@ -45,6 +46,7 @@ function CreateProduct(){
         const target = event.target;
         const value = target.value;
 
+        console.log(value)
         setForm({
             ...form,
             [target.name] : value
@@ -93,7 +95,7 @@ function CreateProduct(){
                             <label>Price:</label>
                             <input type="number" name='price' value={form.price} onChange={handleChange}/>
 
-                            <CategorySelector/>                            
+                            <CategorySelector handleChange={handleChange}/>                            
                         </div>
                     </div>
 
