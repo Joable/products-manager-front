@@ -10,6 +10,7 @@ import { ChangeContext } from '../../Context/ChangeContext';
 import { createProduct } from '../../Services/createProduct';
 
 import ImageSelector from '../ImageSelector/ImageSelector';
+import CategorySelector from '../CategorySelector/CategorySelector';
 
 function CreateProduct(){
     const [modal, setModal] = useState("");
@@ -91,6 +92,8 @@ function CreateProduct(){
 
                             <label>Price:</label>
                             <input type="number" name='price' value={form.price} onChange={handleChange}/>
+
+                            <CategorySelector/>                            
                         </div>
                     </div>
 
