@@ -7,11 +7,11 @@ function CategorySelector({handleChange, selected}){
         const str = option.charAt(0).toUpperCase() + option.slice(1);
 
         return str;
-    }
+    };
 
     const displayOptions = () => {
         return options.map((option) =>(option === selected) ? <option value={option} selected>{formatOption(option)}</option> : <option value={option}>{formatOption(option)}</option>);
-    }
+    };
 
     return(
         <>
@@ -21,7 +21,7 @@ function CategorySelector({handleChange, selected}){
             {displayOptions()}
         </select>
         </>
-    )
-}
+    );
+};
 
 export default CategorySelector;

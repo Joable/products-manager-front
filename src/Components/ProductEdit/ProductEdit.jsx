@@ -47,7 +47,7 @@ function ProductEdit({product, setDisplayEdit}){
     return(
         <>
         <div className={styles.image}>
-            <img src={productData.img}/>
+            <img src={`img/${productData.img}`}/>
         </div>
 
         <form className={styles.formWrapper} onSubmit={handleSubmit} autoComplete='off'>
