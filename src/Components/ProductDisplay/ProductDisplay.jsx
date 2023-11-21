@@ -28,7 +28,7 @@ function ProductDisplay({product, setDisplayEdit, setShowModal}){
         const invokeDelete = async() =>{
             await deleteProduct(productData._id);
 
-            setShowModal(false)
+            setShowModal(false);
 
             setChange(true);
         };
@@ -50,7 +50,11 @@ function ProductDisplay({product, setDisplayEdit, setShowModal}){
                 </h2>
 
                 <h3>
-                    {productData.price}
+                    Category: {productData.category}
+                </h3>
+
+                <h3>
+                    {productData.price_currency}
                 </h3>
             </div>
 
