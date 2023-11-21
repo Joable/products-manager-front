@@ -5,8 +5,10 @@ import {
     useContext 
 } from 'react';
 
-import { editProduct } from '../../Services/editProduct';
 import { ChangeContext } from '../../Context/ChangeContext';
+
+import { editProduct } from '../../Services/editProduct';
+import CategorySelector from '../CategorySelector/CategorySelector';
 
 function ProductEdit({product, setDisplayEdit}){
     const [productData, setProductData] = useState(product);
@@ -56,6 +58,8 @@ function ProductEdit({product, setDisplayEdit}){
 
                 <label>Price:</label>
                 <input type="text" name="price" value={productData.price} onChange={handleChange}/>
+
+                <CategorySelector handleChange={handleChange} selected={productData.category}/>
             </div>
 
             <div className={styles.buttons}>
