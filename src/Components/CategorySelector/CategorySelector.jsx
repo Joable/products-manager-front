@@ -1,16 +1,13 @@
 import styles from './CategorySelector.module.css';
 
+import { capitalizeFirst } from '../../Utils/CapitalizeFirst';
+
 function CategorySelector({handleChange, selected}){
     const options = ["headphones", "keyboards", "phones", "mouses"];
 
-    const formatOption = (option) => {
-        const str = option.charAt(0).toUpperCase() + option.slice(1);
-
-        return str;
-    };
-
+    
     const displayOptions = () => {
-        return options.map((option) =>(option === selected) ? <option value={option} selected>{formatOption(option)}</option> : <option value={option}>{formatOption(option)}</option>);
+        return options.map((option) =>(option === selected) ? <option value={option} selected>{capitalizeFirst(option)}</option> : <option value={option}>{capitalizeFirst(option)}</option>);
     };
 
     return(

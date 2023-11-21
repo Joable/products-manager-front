@@ -7,6 +7,7 @@ import {
 import { ChangeContext } from '../../Context/ChangeContext';
 
 import { deleteProduct } from '../../Services/deleteProduct';
+import { capitalizeFirst } from '../../Utils/CapitalizeFirst';
 
 function ProductDisplay({product, setDisplayEdit, setShowModal}){
     const [productData, setProductData] = useState({
@@ -50,7 +51,7 @@ function ProductDisplay({product, setDisplayEdit, setShowModal}){
                 </h2>
 
                 <h3>
-                    Category: {productData.category}
+                    Category: {capitalizeFirst(productData.category)}
                 </h3>
 
                 <h3>
